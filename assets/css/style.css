@@ -1,0 +1,32 @@
+body {
+    background: url("C:\Users\Tony\Desktop\Coding\Trivia-game\assets\images\trivia.jpg");
+}
+
+.center {
+     text-align: center;
+}
+
+.container {
+    background-color: red;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 350px;
+}
+
+button {
+    width: 200px;
+    height: 40px;
+}
+
+ul {
+    list-style: none;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+#firstQuestion {
+    display: none;
+
+}
