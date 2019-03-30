@@ -1,15 +1,20 @@
 body {
-    background: url("C:\Users\Tony\Desktop\Coding\Trivia-game\assets\images\trivia.jpg");
+    background: url("/assets/images/trivia.jpg");
 }
 
 .center {
      text-align: center;
 }
 
+h1 {
+    color: white;
+    font-size: 60px;
+}
+
 .container {
-    background-color: red;
-    margin-right: 30px;
-    margin-left: 30px;
+    background-color: coral;
+    margin-right: 100px;
+    margin-left: 100px;
     padding-top: 30px;
     padding-bottom: 350px;
 }
@@ -17,6 +22,11 @@ body {
 button {
     width: 200px;
     height: 40px;
+    background-color: white;
+    color: grey;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
 }
 
 ul {
@@ -26,7 +36,11 @@ ul {
     line-height: 40px;
 }
 
-#firstQuestion {
+#firstQuestion, #secondQuestion {
     display: none;
 
+}
+
+.correctAnswer {
+    display: none;
 }
