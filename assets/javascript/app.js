@@ -7,14 +7,15 @@ var fourthChoice = document.getElementById("fourthChoice");
 var timeWatch = document.getElementById("timer");
 var solution = document.querySelector(".correct");
 var correct = document.querySelector(".correctAnswer");
+var endResults = document.getElementById("results");
 
 var triviaAsk = ["Who is the main actor in the Taken Movie?", 
                  "How many Avengers are there?" ,
-                  "Which of these is not an Avenger?"];
+                  "Which of these is not an Avenger?", ""];
 
 var count = 0;
-var correctChoice = 1;
-var incorrect = 1;
+var correctChoice = 0;
+var incorrect = 0;
 var watch = 30;
 var intervalID;
 
@@ -39,12 +40,6 @@ var triviaChoice = [{
                         choiceFour: []
                     }];
 
-console.log(triviaChoice[0].choiceOne[3])
-
-function nextQuestion() {
-    setTimeout(displayQuestion, 30000);
-
-}
 
 function displayQuestion() {   
     watch--;
@@ -52,8 +47,6 @@ function displayQuestion() {
 
     showQuestion.innerHTML = triviaAsk[count];
     
-
-
         firstChoice.innerHTML = triviaChoice[0].choiceOne[0];
         secondChoice.innerHTML = triviaChoice[0].choiceOne[1];
         thirdChoice.innerHTML = triviaChoice[0].choiceOne[2];
@@ -61,31 +54,50 @@ function displayQuestion() {
 
     if (watch === 0) {
         count++;
+        firstChoice.innerHTML = triviaChoice[1].choiceTwo[0];
         showQuestion.innerHTML = triviaAsk[count];
         
         watch = 30;
     }
 
+    if (count === 3) {
+        showQuestion.style.display = 'none';
+        firstChoice.style.display = 'none';
+        secondChoice.style.display = 'none';
+        thirdChoice.style.display = 'none';
+        fourthChoice.style.display = 'none';
+        count = 3;
+        endResults.innerHTML = "Correct Answers: " + correctChoice + " Incorrect Answers: " + incorrect;
+        watch = 100;
+    }
+
     
     showQuestion.style.display = 'block';
-
-    test = setInterval(nextQuestion, 30000);
-
     start.style.display = 'none';
+    newQuestion = setInterval(nextQuestion, 30000);
 
     startClock();
 }
 
 function updateDisplay() {
-    
     correct.style.display = 'block';
-    correct++;
+    showQuestion.style.display = 'none';
+    count++;
+    correctChoice++;
+
+}
+
+function nextQuestion() {
+    setTimeout(displayQuestion, 30000);
+    setTimeout(updateDisplay, 5000);
 }
 
 function startClock() {
     clearInterval(intervalID);
     intervalID = setInterval(displayQuestion, 1000);
+
 }
+
 
 
 
