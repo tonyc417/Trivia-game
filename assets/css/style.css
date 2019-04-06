@@ -35,10 +35,11 @@ button {
     cursor: pointer;
 }
 
-ul {
-    list-style: none;
-    cursor: pointer;
+p {
+    color: white;
     font-size: 30px;
+    text-align: center;
+    cursor: pointer;
     line-height: 40px;
 }
 
