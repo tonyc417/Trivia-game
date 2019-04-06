@@ -64,25 +64,26 @@ function displayQuestion() {
         secondChoice.innerHTML = triviaChoice[1].choiceTwo[1];
         thirdChoice.innerHTML = triviaChoice[1].choiceTwo[2];
         fourthChoice.innerHTML = triviaChoice[1].choiceTwo[3];
+        correct.style.display = 'none';
         wrongText.style.display = 'none';
     } else if (count === 2) {
         firstChoice.innerHTML = triviaChoice[2].choiceThree[0];
         secondChoice.innerHTML = triviaChoice[2].choiceThree[1];
         thirdChoice.innerHTML = triviaChoice[2].choiceThree[2];
         fourthChoice.innerHTML = triviaChoice[2].choiceThree[3];
+        correct.style.display = 'none';
         wrongText.style.display = 'none';
     } else if (count === 3) {
         endResults.innerHTML = "Correctly Answered: " + correctChoice + " Incorrectly Answered: " + incorrect;
-        firstChoice.style.display = 'none';
-        secondChoice.style.display = 'none';
-        thirdChoice.style.display = 'none';
-        fourthChoice.style.display = 'none';
+        firstChoice.innerHTML = '';
+        secondChoice.innerHTML = '';
+        thirdChoice.innerHTML = '';
+        fourthChoice.innerHTML = '';
+        correct.style.display = 'none';
         wrongText.style.display = 'none';
+        reset();
     }
 
-
-
-    
     if (watch === 0) {
         count++;
         firstChoice.innerHTML = triviaChoice[1].choiceTwo[0];
@@ -94,8 +95,22 @@ function displayQuestion() {
     showQuestion.style.display = 'block';
     start.style.display = 'none';
     newQuestion = setInterval(nextQuestion, 30000);
-
     startClock();
+}
+
+function reset() {
+    if (watch === 0 && count ===3) {
+        count = 0;
+        showQuestion.innerHTML = triviaAsk[count];
+
+        firstChoice.innerHTML = triviaChoice[0].choiceOne[0];
+        secondChoice.innerHTML = triviaChoice[0].choiceOne[1];
+        thirdChoice.innerHTML = triviaChoice[0].choiceOne[2];
+        fourthChoice.innerHTML = triviaChoice[0].choiceOne[3];
+        correct.style.display = 'none';
+        wrongText.style.display = 'none';
+        endResults.innerHTML = '';
+    }
 }
 
 function updateDisplay() {
