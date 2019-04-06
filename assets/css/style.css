@@ -1,5 +1,5 @@
 body {
-    background: url("/assets/images/trivia.jpg");
+    background: url(https://tonyc417.github.io/Trivia-game/assets/images/trivia.jpg);
 }
 
 .center {
@@ -21,8 +21,8 @@ h1 {
     background-color: coral;
     margin-right: 100px;
     margin-left: 100px;
-    padding-top: 30px;
-    padding-bottom: 350px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 button {
@@ -45,5 +45,9 @@ p {
 
 
 .correctAnswer {
+    display: none;
+}
+
+.incorrectAnswer {
     display: none;
 }

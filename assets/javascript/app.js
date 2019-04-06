@@ -6,12 +6,16 @@ var thirdChoice = document.getElementById("thirdChoice");
 var fourthChoice = document.getElementById("fourthChoice");
 var timeWatch = document.getElementById("timer");
 var solution = document.querySelector(".correct");
+var incorrectChoice = document.querySelector(".incorrect");
+var wrongTwo = document.querySelector(".incorrectTwo");
+var wrongThree = document.querySelector(".incorrectThree");
+var wrongText = document.querySelector(".incorrectAnswer");
 var correct = document.querySelector(".correctAnswer");
 var endResults = document.getElementById("results");
 
 var triviaAsk = ["Who is the main actor in the Taken Movie?", 
                  "How many Avengers are there?" ,
-                  "Which of these is not an Avenger?", ""];
+                  "Which of these is not an Avenger?", ""];            
 
 var count = 0;
 var correctChoice = 0;
@@ -24,6 +28,9 @@ var test;
 
 start.addEventListener("click", displayQuestion);
 solution.addEventListener("click", updateDisplay);
+incorrectChoice.addEventListener("click", updateScore);
+wrongTwo.addEventListener("click", updateScore);
+wrongThree.addEventListener("click", updateScore);
 
 
 var triviaChoice = [{
@@ -35,7 +42,7 @@ var triviaChoice = [{
                     }, {
                     choiceTwo:["4", "3", "2", "5"]    
                     }, {
-                    choiceThree: ["Hulk", "Simba", "Iron Man", "Captain Marvel"] 
+                    choiceThree: ["Simba", "Hulk", "Iron Man", "Captain Marvel"] 
                     }, {
                         choiceFour: []
                     }];
@@ -52,6 +59,30 @@ function displayQuestion() {
         thirdChoice.innerHTML = triviaChoice[0].choiceOne[2];
         fourthChoice.innerHTML = triviaChoice[0].choiceOne[3];
 
+    if (count === 1) {
+        firstChoice.innerHTML = triviaChoice[1].choiceTwo[0];
+        secondChoice.innerHTML = triviaChoice[1].choiceTwo[1];
+        thirdChoice.innerHTML = triviaChoice[1].choiceTwo[2];
+        fourthChoice.innerHTML = triviaChoice[1].choiceTwo[3];
+        wrongText.style.display = 'none';
+    } else if (count === 2) {
+        firstChoice.innerHTML = triviaChoice[2].choiceThree[0];
+        secondChoice.innerHTML = triviaChoice[2].choiceThree[1];
+        thirdChoice.innerHTML = triviaChoice[2].choiceThree[2];
+        fourthChoice.innerHTML = triviaChoice[2].choiceThree[3];
+        wrongText.style.display = 'none';
+    } else if (count === 3) {
+        endResults.innerHTML = "Correctly Answered: " + correctChoice + " Incorrectly Answered: " + incorrect;
+        firstChoice.style.display = 'none';
+        secondChoice.style.display = 'none';
+        thirdChoice.style.display = 'none';
+        fourthChoice.style.display = 'none';
+        wrongText.style.display = 'none';
+    }
+
+
+
+    
     if (watch === 0) {
         count++;
         firstChoice.innerHTML = triviaChoice[1].choiceTwo[0];
@@ -59,18 +90,6 @@ function displayQuestion() {
         
         watch = 30;
     }
-
-    if (count === 3) {
-        showQuestion.style.display = 'none';
-        firstChoice.style.display = 'none';
-        secondChoice.style.display = 'none';
-        thirdChoice.style.display = 'none';
-        fourthChoice.style.display = 'none';
-        count = 3;
-        endResults.innerHTML = "Correct Answers: " + correctChoice + " Incorrect Answers: " + incorrect;
-        watch = 100;
-    }
-
     
     showQuestion.style.display = 'block';
     start.style.display = 'none';
@@ -81,15 +100,18 @@ function displayQuestion() {
 
 function updateDisplay() {
     correct.style.display = 'block';
-    showQuestion.style.display = 'none';
     count++;
     correctChoice++;
+}
 
+function updateScore() {
+    wrongText.style.display = 'block';
+    count++;
+    incorrect++;
 }
 
 function nextQuestion() {
     setTimeout(displayQuestion, 30000);
-    setTimeout(updateDisplay, 5000);
 }
 
 function startClock() {
