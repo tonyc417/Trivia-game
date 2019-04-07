@@ -120,6 +120,11 @@ function reset() {
 function updateDisplay() {
     correct.style.display = 'block';
     userAnswer.style.display = 'block';
+    showQuestion.innerHTML = '';
+    firstChoice.innerHTML = '';
+    secondChoice.innerHTML = '';
+    thirdChoice.innerHTML = '';
+    fourthChoice.innerHTML = '';
     count++;
     correctChoice++;
 }
@@ -127,6 +132,11 @@ function updateDisplay() {
 function updateScore() {
     wrongText.style.display = 'block';
     userAnswer.style.display = 'block';
+    showQuestion.innerHTML = '';
+    firstChoice.innerHTML = '';
+    secondChoice.innerHTML = '';
+    thirdChoice.innerHTML = '';
+    fourthChoice.innerHTML = '';
     count++;
     incorrect++;
 }
